@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap5/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/fontawesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header"></header>
+      <nav
+        class="breadcrumb d-flex justify-content-center align-items-center mt-3"
+        aria-label="breadcrumb"
+      >
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item">Lenovo Thinkpad 555</li>
+        </ol>
+      </nav>
+      <section class="contents">
+        <div class="row pe-2">
+          <div class="card view-product row-products border-0"></div>
+        </div>
+        <div class="row">
+          <h4 class="ps-0" style="font-weight: 700; font-size: 1.3em">
+            REVIEWS
+          </h4>
+          <ul class="list-group list-group-flush review">
+            <li class="border-bottom border-light-subtle list-group-item">
+              Customer Review
+            </li>
+            <li class="border-bottom border-light-subtle list-group-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <span class="totalRatingStar"></span>
+                  <span class="totalNumberStar"></span>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end">
+                  <a href="#">Write Review</a>
+                </div>
+              </div>
+            </li>
+            <li class="border-0 list-group-item text-black-50">
+              Write a Review
+            </li>
+            <li class="border-bottom border-light-subtle list-group-item">
+              <div class="row">
+                <div class="col-md-12">
+                  <i onclick="starRating(1)" class="fa fa-star starRate"></i>
+                  <i onclick="starRating(2)" class="fa fa-star starRate"></i>
+                  <i onclick="starRating(3)" class="fa fa-star starRate"></i>
+                  <i onclick="starRating(4)" class="fa fa-star starRate"></i>
+                  <i onclick="starRating(5)" class="fa fa-star starRate"></i>
+                </div>
+                <div class="col-md-12">
+                  <textarea
+                    name="comment"
+                    class="form-control mt-3 ps-2 comment"
+                    style="resize: none"
+                  >
+                  </textarea>
+                </div>
+                <div class="col-md-12 mt-3 d-flex justify-content-end">
+                  <a
+                    type="button"
+                    class="btn btn-sm rounded-5 bg-dark text-white submit-review-btn"
+                  >
+                    Submit Review
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="list-group list-group-flush userReview"></ul>
+        </div>
+        <div class="row products mt-5 d-flex flex-row gap-2">
+          <h4 class="ps-0" style="font-weight: 700; font-size: 1.3em">
+            YOU MAY LIKE
+          </h4>
+        </div>
+      </section>
+      <footer class="footer row text-white p-2"></footer>
+    </div>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content rounded-0">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  class="form-control border-0 rounded-0 border-bottom border-purple-subtle search-product-input"
+                  placeholder="Search Product Here ..."
+                />
+              </div>
+            </div>
+            <div class="row mt-2 search-content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/js/bootstrap5/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="/components/header.js"></script>
+  <script src="/features/searchProduct.js"></script>
+  <script src="/features/getProductByCategory.js"></script>
+  <script src="/features/singleProduct.js"></script>
+  <script src="/features/addToCart.js"></script>
+  <script src="/features/addToWishlist.js"></script>
+  <script src="/components/productCard.js"></script>
+  <script src="/components/footer.js"></script>
+</html>

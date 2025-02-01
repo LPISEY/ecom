@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap5/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/fontawesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header"></header>
+      <nav
+        class="breadcrumb d-flex justify-content-center align-items-center mt-3"
+        aria-label="breadcrumb"
+      >
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item">Sign Up</li>
+        </ol>
+      </nav>
+      <section class="contents">
+        <div class="row mt-5 d-flex justify-content-center align-items-center">
+          <div class="col-md-4 p-4 form-input">
+            <form name="signUpForm">
+              <div class="mb-3">
+                <h4 class="text-center">Sign Up</h4>
+                <div
+                  id="invalide"
+                  class="form-text text-center text-danger pt-3"
+                ></div>
+              </div>
+              <div class="mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input
+                  type="text"
+                  class="form-control rounded-0"
+                  id="firstName"
+                  name="firstName"
+                  aria-describedby="firstNameError"
+                />
+                <div id="firstNameError" class="form-text text-danger"></div>
+              </div>
+              <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input
+                  type="text"
+                  class="form-control rounded-0"
+                  id="lastName"
+                  name="lastName"
+                  aria-describedby="lastNameError"
+                />
+                <div id="lastNameError" class="form-text text-danger"></div>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control rounded-0"
+                  id="email"
+                  name="email"
+                  aria-describedby="emailError"
+                />
+                <div id="emailError" class="form-text text-danger"></div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control rounded-0"
+                  id="password"
+                  name="password"
+                  aria-describedby="passwordError"
+                />
+                <div id="passwordError" class="form-text text-danger"></div>
+              </div>
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label"
+                  >Confirm Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control rounded-0"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  aria-describedby="confirmPasswordError"
+                />
+                <div
+                  id="confirmPasswordError"
+                  class="form-text text-danger"
+                ></div>
+              </div>
+              <div class="d-grid gap-2 d-md-flex justify-content-center">
+                <a
+                  href="login.html"
+                  class="btn btn-dark me-md-2 rounded-5 text-white submit-btn"
+                  type="button"
+                >
+                  Back
+                </a>
+                <button
+                  class="btn btn-warning rounded-5 text-dark submit-btn signup-btn"
+                  type="button"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <footer class="footer row text-white p-2"></footer>
+    </div>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content rounded-0">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  class="form-control border-0 rounded-0 border-bottom border-purple-subtle search-product-input"
+                  placeholder="Search Product Here ..."
+                />
+              </div>
+            </div>
+            <div class="row mt-2 search-content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/js/bootstrap5/bootstrap.bundle.min.js"></script>
+  <script src="/components/header.js"></script>
+  <script src="/features/searchProduct.js"></script>
+  <script src="/features/getProductByCategory.js"></script>
+  <script src="/components/footer.js"></script>
+  <script src="/features/signUp.js"></script>
+</html>
