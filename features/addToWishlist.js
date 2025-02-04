@@ -15,7 +15,11 @@ const addToWishList = (id) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      // if (data) window.location = "wishlist.html";
+      // if (data) {
+      //   document
+      //     .querySelectorAll(".addToWishList")
+      //     .forEach((e) => e.classList.toggle("liked"));
+      // }
     })
     .catch((e) => console.log(e));
 };

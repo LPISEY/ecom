@@ -72,7 +72,6 @@ paymentBtn.addEventListener("click", () => {
             totalPrice: total,
           };
           orderData.push({ ...newOrderData });
-
           fetch("http://localhost:5000/api/user/order/create-order", {
             method: "POST",
             headers: {
@@ -97,6 +96,7 @@ paymentBtn.addEventListener("click", () => {
         });
       })
       .catch((e) => console.log(e));
+    return true;
   } else {
     return false;
   }

@@ -16,14 +16,19 @@ const getProductByCategory = async (cid) => {
   test.style.height = "auto";
   let items = "";
   data.map((item) => {
-    items += ` <div class="col-md-2 mt-2" onclick=tempProductId("${item._id}")>
-                    <div class="card rounded-0 p-2">
-                      <img src="/assets/images/ch1.jpg" class="rounded-0 mt-2" alt="" />
-                      <div class="card-body">
-                        <small>${item.title}</small>
+    star(item.totalrating);
+
+    items += ` <div class="col-md-2 mt-1" onclick=addIdToSingleProduct("${item._id}")>
+                      <div class="card rounded-0 p-2">
+                        <img src="/assets/images/ch1.jpg" class="rounded-0 mt-2" alt="${item.title}" 
+                        style="height:120px"/>
+                        <div class="card-body p-0  pt-2">
+                          <small class="text-success ps-0">${item.title}<br /></small>
+                          <small class="text-danger ps-0">$ ${item.price}<br /></small>
+                          ${stars}
+                        </div>
                       </div>
-                    </div>
-                </div>`;
+                    </div>`;
   });
   setInterval(function () {
     productPanel.style.display = "flex";

@@ -24,10 +24,10 @@ const header = `<nav class="row topNavBar">
                         class="col-md-8 d-flex justify-content-center align-items-center"
                         >
                             <div class="input-group">
-                                <input type="text" class="form-control" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"/>
-                                <span class="input-group-text" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
+                                <input type="text" class="form-control rounded-0" data-bs-toggle="modal"
+                    data-bs-target="#searchProductModal"/>
+                                <span class="input-group-text rounded-0" data-bs-toggle="modal"
+                    data-bs-target="#searchProductModal"
                                 ><i class="fa fa-search"></i
                                 ></span>
                             </div>
@@ -126,7 +126,7 @@ const header = `<nav class="row topNavBar">
                                     <a class="nav-link" href="contact.html">CONTACT US</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">ABOUT US</a>
+                                    <a class="nav-link" href="about.html">ABOUT US</a>
                                 </li>
                             </ul>
                         </div>

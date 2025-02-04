@@ -1,44 +1,15 @@
-const getProductId = localStorage.getItem("productId");
+const getProductId = localStorage.getItem("id");
 const productId = JSON.parse(getProductId);
 
 const getSingleProduct = async () => {
   let items = "";
-  let stars = "";
   let numberRater = 0;
   await fetch(`http://localhost:5000/api/product/ui/${productId}`)
     .then((response) => response.json())
     .then((item) => {
       numberRater = item.rating.length;
-      console.log(item.color);
+      star(item.totalrating);
 
-      switch (Number(item.totalrating)) {
-        case 0:
-          stars =
-            '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
-          break;
-        case 1:
-          stars =
-            '<i class="fa fa-star starRated"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
-          break;
-        case 2:
-          stars =
-            '<i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
-          break;
-        case 3:
-          stars =
-            '<i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
-          break;
-        case 4:
-          stars =
-            '<i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star"></i>';
-          break;
-        case 5:
-          stars =
-            '<i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i>';
-          break;
-        default:
-          break;
-      }
       items += `<div class="card-img" >
                   <img src="/assets/images/ch1.jpg" class="card-img-top rounded-0 mt-2" alt=${
                     item.title
@@ -51,7 +22,7 @@ const getSingleProduct = async () => {
                     </h4>
                   </div>
                   <ul class="list-group list-group-flush" >
-                    <li class="border-bottom border-light-subtle list-group-item text-success product-price">
+                    <li class="border-bottom border-light-subtle list-group-item text-success fs-4 product-price">
                       $ ${item.price}
                     </li>
                     <li class="border-0 list-group-item brand-name text-danger">
@@ -152,7 +123,7 @@ const getSingleProduct = async () => {
 getSingleProduct();
 
 let starRate = document.getElementsByClassName("starRate");
-let star = 0;
+let starNumber = 0;
 
 function starRating(n) {
   for (let i = 0; i < n; i++) {
@@ -163,7 +134,7 @@ function starRating(n) {
     else if (n == 5) cls = "five";
     starRate[i].classList.add(cls);
   }
-  star = n;
+  starNumber = n;
 }
 
 const submitReviewBtn = document.querySelector(".submit-review-btn");
@@ -195,39 +166,12 @@ submitReviewBtn.addEventListener("click", async () => {
 getRatingProduct();
 function getRatingProduct() {
   let items = "";
-  let stars = "";
   fetch(`http://localhost:5000/api/product/ui/${productId}`)
     .then((response) => response.json())
     .then((data) => {
       data?.rating?.map((item) => {
-        switch (item.star) {
-          case 0:
-            stars =
-              '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
-            break;
-          case 1:
-            stars =
-              '<i class="fa fa-star starRated"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
-            break;
-          case 2:
-            stars =
-              '<i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
-            break;
-          case 3:
-            stars =
-              '<i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
-            break;
-          case 4:
-            stars =
-              '<i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star"></i>';
-            break;
-          case 5:
-            stars =
-              '<i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i>';
-            break;
-          default:
-            break;
-        }
+        star(item.star);
+
         items += `<li class="border-bottom border-light-subtle list-group-item">
                     <p>
                       ${item.postedbyname}:

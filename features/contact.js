@@ -65,9 +65,9 @@ sendBtn.addEventListener("click", () => {
 
 getTotal();
 async function getTotal() {
-  const user = localStorage.getItem("cust");
+  const user = localStorage?.getItem("cust");
   const getUserToken = JSON.parse(user);
-  const userToken = getUserToken.token;
+  const userToken = getUserToken?.token;
 
   const response = await fetch(`http://localhost:5000/api/user/cart`, {
     headers: {

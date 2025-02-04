@@ -276,10 +276,27 @@ ol.breadcrumb li a {
 .actions {
   font-size: 11px;
 }
-.like-btn {
-  position: relative;
-  top: 0;
+.liked-btn {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.liked {
+  color: var(--color-bf4800);
+}
+.liked-btn:active i {
+  color: red;
+}
+
+:target {
+  color: red;
+}
+
 .myProfile {
   height: 400px;
 }

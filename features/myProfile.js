@@ -52,12 +52,9 @@ async function getUserOrder() {
     });
   }
 }
-const fn = document.querySelector(".firstName");
-let ln = document.querySelector(".lastName");
-const em = document.querySelector(".email");
-getUserInfo();
-async function getUserInfo() {
-  const response = await fetch(`http://localhost:5000/api/user/${userId}`);
+
+const logout = async () => {
+  const response = await fetch("http://localhost:5000/api/user/logout");
   const data = await response.json();
-  console.log(fn.nodeValue);
-}
+  console.log(data);
+};

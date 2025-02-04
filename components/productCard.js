@@ -1,40 +1,14 @@
 const getAllProducts = async () => {
   try {
-    const response = await fetch(`http://localhost:5000/api/product/ui`);
+    const response = await fetch(
+      `http://localhost:5000/api/product/getNewProduct`
+    );
     const data = await response.json();
     let items = "";
-    let stars = "";
     data.map((item) => {
       const _id = item._id;
 
-      switch (item.totalrating) {
-        case 0:
-          stars =
-            '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
-          break;
-        case 1:
-          stars =
-            '<i class="fa fa-star starRated"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
-          break;
-        case 2:
-          stars =
-            '<i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
-          break;
-        case 3:
-          stars =
-            '<i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
-          break;
-        case 4:
-          stars =
-            '<i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star"></i>';
-          break;
-        case 5:
-          stars =
-            '<i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i><i class="fa fa-star starRated"></i>';
-          break;
-        default:
-          break;
-      }
+      star(item.totalrating);
 
       items += `<div class="card product border-1 column-products" id=${
         item._id
@@ -46,6 +20,9 @@ const getAllProducts = async () => {
                       class="card-img-top rounded-0 mt-2"
                       alt="${item.title}"
                   />
+                  <a href="#" class="btn btn-info rounded-5 liked-btn addToWishList"  onclick=addToWishList("${_id}")>
+                    <i class="fa fa-heart "></i>
+                  </a>
                   <div class="card-info">
                     <div class="card-body ps-0">
                       <h6 class="card-title product-title text-primary">
@@ -78,7 +55,7 @@ const getAllProducts = async () => {
                           <i class="fa fa-cart-arrow-down "></i> Add To Cart
                         </a>
                         <a href="#" type="button" class="btn btn-outline-info actions rounded-0"
-                        id="${item._id}" onclick=tempProductId("${_id}")>
+                        id="${item._id}" onclick=addIdToSingleProduct("${_id}")>
                           <i class="fa fa-info-circle"></i> More Details
                         </a>
                       </div>
