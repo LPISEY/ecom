@@ -11,9 +11,9 @@ const getSingleProduct = async () => {
       star(item.totalrating);
 
       items += `<div class="card-img" >
-                  <img src="/assets/images/ch1.jpg" class="card-img-top rounded-0 mt-2" alt=${
-                    item.title
-                  }"/>
+                  <img src="/assets/images/${
+                    item.images.length == 0 ? "ch1.jpg" : item.images[0].url
+                  }" class="card-img-top rounded-0 mt-2" alt=${item.title}"/>
                 </div>
                 <div class="card-info" >
                   <div class="card-body" >
@@ -72,7 +72,7 @@ const getSingleProduct = async () => {
                         <div class="row">
                           <label class="col-sm-2 col-form-label">Quality : </label>
                           <div class="col-sm-3">
-                            <input type="text" class="form-control quantity" />
+                            <input type="text" class="form-control rounded-5 text-center quantity" />
                           <div class="form-text text-danger " id="quantityError"></div>
                           </div>
                           <div class="col-sm-3">
@@ -122,6 +122,30 @@ const getSingleProduct = async () => {
 };
 getSingleProduct();
 
+youMayLikes();
+async function youMayLikes() {
+  try {
+    const response = await fetch(
+      `http://localhost:5000/api/product/youMayLike`
+    );
+    const data = await response.json();
+    data.map((item) => {
+      star(item.totalrating);
+      const id = item._id;
+      const image = item.images[0].url;
+      const title = item.title;
+      const brand = item.brand.title;
+      const price = item.price;
+      const description = item.description;
+      productCard(id, image, title, brand, price, description, star);
+    });
+
+    document.querySelector(".youMayLike").innerHTML = items;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 let starRate = document.getElementsByClassName("starRate");
 let starNumber = 0;
 
@@ -153,7 +177,7 @@ submitReviewBtn.addEventListener("click", async () => {
       Authorization: `Bearer ${userToken}`,
     },
     body: JSON.stringify({
-      star: star,
+      star: starNumber,
       comment: comment.comment.value.replace(/^\s+|\s+$/gm, ""),
       prodId: productId,
     }),

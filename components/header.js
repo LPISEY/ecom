@@ -48,7 +48,7 @@ const header = `<nav class="row topNavBar">
                                         class="col-md-6 d-flex justify-content-center align-items-center"
                                     >
                                         <i class="fa fa-heart nav-bar-icons"></i>
-                                        Favourite Wishlist
+                                        <span class="nav-bar-icons-text">Favourite Wishlist</span>
                                     </div>
                                 </div>
                             </a>
@@ -64,14 +64,16 @@ const header = `<nav class="row topNavBar">
                                         class="col-md-12 d-flex justify-content-center align-items-center"
                                     >
                                         <i class="fa fa-user nav-bar-icons"></i>
-                                        ${
-                                          username != null
-                                            ? "WELCOME<br />" +
-                                              username?.firstname +
-                                              " " +
-                                              username?.lastname
-                                            : "Login <br />My Account"
-                                        }
+                                        <span class="nav-bar-icons-text">
+                                            ${
+                                              username != null
+                                                ? "WELCOME<br />" +
+                                                  username?.firstname +
+                                                  " " +
+                                                  username?.lastname
+                                                : "Login <br />My Account"
+                                            }
+                                        </span>
                                     
                                     </div>
                                 </div>
@@ -89,8 +91,8 @@ const header = `<nav class="row topNavBar">
                                     >
                                         <i class="fa fa-opencart nav-bar-icons"></i>
                                         <div>
-                                        <small class="totalItems"></small><br />
-                                        <small class="totalPrice"></small>
+                                        <small class="totalItems nav-bar-icons-text"></small><br />
+                                        <small class="totalPrice nav-bar-icons-text"></small>
                                         </div>
                                     </div>
                                 </div>

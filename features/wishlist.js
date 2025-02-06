@@ -52,78 +52,31 @@ const addToCart2 = (productId, price) => {
     })
     .catch((e) => console.log(e));
 };
-userWishList();
-function userWishList() {
+wishLists();
+async function wishLists() {
   const user = localStorage.getItem("cust");
   const getUserToken = JSON.parse(user);
   const userToken = getUserToken.token;
+  try {
+    const response = await fetch(`http://localhost:5000/api/user/wishlist`, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
+    const data = await response.json();
+    data.wishlist.map((item) => {
+      star(item.totalrating);
+      const id = item._id;
+      const image = item.images[0].url;
+      const title = item.title;
+      const brand = item.brand.title;
+      const price = item.price;
+      const description = item.description;
+      productCard(id, image, title, brand, price, description, star);
+    });
 
-  fetch("http://localhost:5000/api/user/wishlist", {
-    headers: {
-      Authorization: `Bearer ${userToken}`,
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      let items = "";
-      data.wishlist?.map((item) => {
-        const _id = item._id;
-
-        star(item.totalrating);
-
-        items += `<div class="card product border-1 column-products" id=${
-          item._id
-        }>
-          <img
-            src="/assets/images/${
-              item.images.length == 0 ? "ch1.jpg" : item.images
-            }"
-            class="card-img-top rounded-0 mt-2"
-            alt="${item.title}"
-          />
-          <a href="#" class="btn btn-danger rounded-5 liked-btn addToWishList"  onclick=addToWishList("${_id}")>
-            <i class="fa fa-heart "></i>
-          </a>
-          <div class="card-info">
-            <div class="card-body ps-0">
-              <h6 class="card-title product-title text-primary">
-                ${item.title}
-              </h6>
-              <small class="product-description text-black-50">${
-                item.description
-              }</small>
-            </div>
-            <ul class="list-group list-group-flush ">
-              <li class="border-0 list-group-item brand-name text-danger ps-0">
-                ${item.brand.title}
-              </li>
-              <li class="border-0 list-group-item ps-0 star">
-                ${stars}
-              </li>
-              <li class="border-0 list-group-item text-success ps-0 product-price">$ ${
-                item.price
-              }</li>
-            </ul>
-            <div
-              class="card-body  d-flex justify-content-center align-items-center"
-            >
-              <div
-                        class="btn-group"
-                      >
-                        <a type="button" class="btn btn-outline-success actions rounded-0"
-                          onclick=addToCart2("${item._id}","${item.price}")>
-                          <i class="fa fa-cart-arrow-down "></i> Add To Cart
-                        </a>
-                        <a href="#" type="button" class="btn btn-outline-info actions rounded-0"
-                        id="${item._id}" onclick=tempProductId("${_id}")>
-                          <i class="fa fa-info-circle"></i> More Details
-                        </a>
-                      </div>
-            </div>
-          </div>
-        </div>`;
-      });
-      document.querySelector(".wishlist").innerHTML = items;
-    })
-    .catch((e) => console.log(e));
+    document.querySelector(".wishlist").innerHTML = items;
+  } catch (error) {
+    throw new Error(error);
+  }
 }

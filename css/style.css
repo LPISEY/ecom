@@ -101,7 +101,7 @@ ol.breadcrumb li a {
   margin-bottom: 5px;
 }
 .card-img-top {
-  height: 255px;
+  height: 230px;
 }
 .row-products {
   display: flex;
@@ -289,8 +289,8 @@ ol.breadcrumb li a {
 .liked {
   color: var(--color-bf4800);
 }
-.liked-btn:active i {
-  color: red;
+.liked-btn i {
+  font-size: 12px;
 }
 
 :target {
@@ -302,4 +302,34 @@ ol.breadcrumb li a {
 }
 .nav-pills .nav-link {
   border-radius: 0;
+}
+.productCard {
+  cursor: pointer;
+}
+
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1200px) {
+  .nav-bar-icons {
+    font-size: 30px;
+  }
+  .nav-bar-icons-text {
+    font-size: 12px;
+  }
+  .product {
+    width: 11.6rem;
+    border-radius: 0px;
+    margin-bottom: 5px;
+  }
+  .card-img-top {
+    height: 200px;
+  }
+  .footer h4 {
+    font-size: 1.1em;
+  }
+  .footer p {
+    font-size: 0.8rem;
+  }
+  .footer ul li a {
+    font-size: 0.8em;
+  }
 }
