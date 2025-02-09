@@ -4,30 +4,30 @@ const userToken = getUserToken?.token;
 const paymentBtn = document.querySelector(".payment-btn");
 
 paymentBtn.addEventListener("click", () => {
-  let cardNumber = document.forms["paymentForm"]["cardNumber"].value;
-  let cardHolderName = document.forms["paymentForm"]["cardHolderName"].value;
-  let expiry = document.forms["paymentForm"]["expiry"];
+  const cardNumber = document.querySelector(".cardNumber");
+  const cardHolderName = document.querySelector(".cardHolderName");
+  const expiry = document.querySelector(".expiry");
 
   const cardNumberError = document.getElementById("cardNumberError");
   const cardHolderNameError = document.getElementById("cardHolderNameError");
   const expiryError = document.getElementById("expiryError");
 
   let isValid = true;
-  if (cardNumber === "") {
+  if (cardNumber.value === "") {
     cardNumberError.textContent = "Please enter credit card number.";
     isValid = false;
   } else {
     cardNumberError.textContent = "";
     isValid = true;
   }
-  if (cardHolderName === "") {
+  if (cardHolderName.value === "") {
     cardHolderNameError.textContent = "Please enter card holder name.";
     isValid = false;
   } else {
     cardHolderNameError.textContent = "";
     isValid = true;
   }
-  if (expiry === "") {
+  if (expiry.value === "") {
     expiryError.textContent = "Please enter expiry date.";
     isValid = false;
   } else {
@@ -58,8 +58,8 @@ paymentBtn.addEventListener("click", () => {
               pincode: dataCheckout[0].shippingInfo.pincode,
             },
             paymentInfo: {
-              cardNumber: cardNumber,
-              cardHolderName: cardHolderName,
+              cardNumber: cardNumber.value,
+              cardHolderName: cardHolderName.value,
               expiryDate: expiry.value,
             },
             orderItems: {
@@ -154,26 +154,18 @@ const getUserCartInCheckOut = async () => {
 };
 getUserCartInCheckOut();
 
-const getShippingAddress = async () => {
+userShipping();
+function userShipping() {
   const checkout = localStorage.getItem("checkout");
   const dataCheckout = JSON.parse(checkout);
-  const shipping = `
-                    <div class="mb-3">
-                        <h4 class="text-center">Shipping Address</h4>
-                    </div>
-                    <div class="col-md-6 mb-3">First Name</div>
-                    <div class="col-md-6 mb-3">${dataCheckout[0].shippingInfo.firstname}</div>
-                    <div class="col-md-6 mb-3">Larst Name</div>
-                    <div class="col-md-6 mb-3">${dataCheckout[0].shippingInfo.lastname}</div>
-                    <div class="col-md-6 mb-3">Address</div>
-                    <div class="col-md-6 mb-3">${dataCheckout[0].shippingInfo.address}</div>
-                    <div class="col-md-6 mb-3">City</div>
-                    <div class="col-md-6 mb-3">${dataCheckout[0].shippingInfo.city}</div>
-                    <div class="col-md-6 mb-3">Pin Code</div>
-                    <div class="col-md-6 mb-3">${dataCheckout[0].shippingInfo.pincode}</div>`;
-  document.querySelector(".shipping").innerHTML = shipping;
-};
-getShippingAddress();
+  const address = document.querySelector(".address");
+  const city = document.querySelector(".city");
+  const pincode = document.querySelector(".pincode");
+
+  address.textContent = dataCheckout[0].shippingInfo.address;
+  city.textContent = dataCheckout[0].shippingInfo.city;
+  pincode.textContent = dataCheckout[0].shippingInfo.pincode;
+}
 
 getTotal();
 async function getTotal() {

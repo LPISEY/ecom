@@ -3,7 +3,7 @@ const productCard = (id, image, title, brand, price, description) => {
   items += `<div class="card product border-1 column-products productCard">
               <img
                 src="/assets/images/${image}"
-                      class="card-img-top rounded-0 mt-2"
+                      class="card-img-top rounded-0 mt-2 mb-2"
                       alt="${title}"
               />
               <a href="#" class="btn btn-dark rounded-5 d-flex justify-center align-items-center liked-btn addToWishList"  onclick=addToWishList("${id}")>
@@ -18,15 +18,14 @@ const productCard = (id, image, title, brand, price, description) => {
                   ${description}
                   </span>
                 </div>
-                <small class="text-info ps-0">
-                  ${brand}
-                </small>
-                <br />
                 <span class="text-danger ps-0">
                   $ ${price}
                 </span>
                 <br />
-                ${stars}
+                ${stars}<br />
+                <small class="text-info ps-0">
+                  ${brand}
+                </small>
                 <div class="card-body  d-flex justify-content-center align-items-center">
                   <div class="btn-group">
                     <a type="button" class="btn btn-outline-success actions rounded-0"

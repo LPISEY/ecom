@@ -113,6 +113,36 @@ const footer = `<div class="col-md-3">
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div
+                    class="modal fade"
+                    id="categoryProductModal"
+                    tabindex="-1"
+                    aria-labelledby="categoryProductModalLabel"
+                    aria-hidden="true"
+                >
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content rounded-0">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="categoryProductModalLabel"></h1>
+                                <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                                ></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                    </div>
+                                </div>
+                                <div class="row mt-2 category-content"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>`;
 document.querySelector(".footer").innerHTML += footer;
 const addIdToSingleProduct = (id) => {

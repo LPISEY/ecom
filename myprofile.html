@@ -32,7 +32,7 @@
                   aria-orientation="vertical"
                 >
                   <button
-                    class="nav-link ps-0 rounded-0"
+                    class="nav-link active ps-3 rounded-0 border-bottom border-light-subtle"
                     id="v-pills-profile-tab"
                     data-bs-toggle="pill"
                     data-bs-target="#v-pills-profile"
@@ -40,11 +40,25 @@
                     role="tab"
                     aria-controls="v-pills-profile"
                     aria-selected="false"
+                    style="text-align: left"
                   >
-                    <i class="fa fa-user"></i> Profile
+                    Profile
                   </button>
                   <button
-                    class="nav-link active ps-0"
+                    class="nav-link ps-3 border-bottom border-light-subtle"
+                    id="v-pills-shipping-tab"
+                    data-bs-toggle="pill"
+                    data-bs-target="#v-pills-shipping"
+                    type="button"
+                    role="tab"
+                    aria-controls="v-pills-shipping"
+                    aria-selected="false"
+                    style="text-align: left"
+                  >
+                    Shipping
+                  </button>
+                  <button
+                    class="nav-link ps-3 border-bottom border-light-subtle"
                     id="v-pills-order-tab"
                     data-bs-toggle="pill"
                     data-bs-target="#v-pills-order"
@@ -52,23 +66,25 @@
                     role="tab"
                     aria-controls="v-pills-order"
                     aria-selected="false"
+                    style="text-align: left"
                   >
-                    <i class="fa fa-file-text-o"></i> Orders
+                    Orders
                   </button>
                   <button
-                    class="nav-link ps-2"
+                    class="nav-link ps-3 border-bottom border-light-subtle"
                     id="v-pills-settings-tab"
                     type="button"
                     onclick="logout()"
+                    style="text-align: left"
                   >
-                    <i class="fa fa-sign-out"></i> Log Out
+                    Log Out
                   </button>
                 </div>
               </div>
               <div class="col-md-9">
                 <div class="tab-content p-3 box-shadow" id="v-pills-tabContent">
                   <div
-                    class="tab-pane fade"
+                    class="tab-pane show active fade"
                     id="v-pills-profile"
                     role="tabpanel"
                     aria-labelledby="v-pills-profile-tab"
@@ -80,14 +96,7 @@
                           <label for="firstName" class="form-label"
                             >First Name</label
                           >
-                          <input
-                            type="text"
-                            class="form-control rounded-0 firstName"
-                            id="firstName"
-                            name="firstName"
-                            aria-describedby="firstNameError"
-                            disabled
-                          />
+                          <p class="firstName text-black-50"></p>
                         </div>
                       </div>
                       <div class="col-md-4">
@@ -95,14 +104,7 @@
                           <label for="lastName" class="form-label"
                             >Last Name</label
                           >
-                          <input
-                            type="text"
-                            class="form-control rounded-0 lastName"
-                            id="lastName"
-                            name="lastName"
-                            aria-describedby="lastNameError"
-                            disabled
-                          />
+                          <p class="lastName text-black-50"></p>
                         </div>
                       </div>
                       <div class="col-md-4">
@@ -110,14 +112,7 @@
                           <label for="email" class="form-label"
                             >Email address</label
                           >
-                          <input
-                            type="email"
-                            class="form-control rounded-0 email"
-                            id="email"
-                            name="email"
-                            aria-describedby="emailError"
-                            disabled
-                          />
+                          <p class="email text-black-50"></p>
                         </div>
                       </div>
                     </div>
@@ -130,7 +125,7 @@
                           >
                           <input
                             type="password"
-                            class="form-control rounded-0"
+                            class="form-control rounded-0 oldPassword"
                             id="oldPassword"
                             name="oldPassword"
                             aria-describedby="oldPasswordError"
@@ -148,7 +143,7 @@
                           >
                           <input
                             type="password"
-                            class="form-control rounded-0"
+                            class="form-control rounded-0 newPassword"
                             id="newPassword"
                             name="newPassword"
                             aria-describedby="newPasswordError"
@@ -163,7 +158,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         <button
-                          class="btn btn-success rounded-5 submit-btn"
+                          class="btn btn-success rounded-5 submit-btn update-password"
                           type="button"
                         >
                           Update
@@ -172,7 +167,7 @@
                     </div>
                   </div>
                   <div
-                    class="tab-pane show active fade"
+                    class="tab-pane fade"
                     id="v-pills-order"
                     role="tabpanel"
                     aria-labelledby="v-pills-order-tab"
@@ -190,9 +185,7 @@
                       <div class="col-md-2 text-black-50 text-center">
                         PRICE
                       </div>
-                      <div class="col-md-1 text-black-50 text-center">
-                        QUANTITY
-                      </div>
+                      <div class="col-md-1 text-black-50">QTY</div>
                       <div class="col-md-2 text-black-50 text-center">
                         SUBTOTAL
                       </div>
@@ -201,6 +194,22 @@
                       </div>
                     </div>
                     <div class="cart-body"></div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="v-pills-shipping"
+                    role="tabpanel"
+                    aria-labelledby="v-pills-shipping-tab"
+                    tabindex="0"
+                  >
+                    <div
+                      class="row"
+                    >
+                      <div class="col-md-12">
+                        <p class="address"></p>
+                        <p class="city"></p>
+                        <p class="pincode"></p>
+                      </div>
                   </div>
                 </div>
               </div>

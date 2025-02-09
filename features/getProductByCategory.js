@@ -12,12 +12,9 @@ const getProductByCategory = async (cid) => {
     }
   );
   const data = await response.json();
-  test.style.display = "block";
-  test.style.height = "auto";
   let items = "";
   data.map((item) => {
     star(item.totalrating);
-
     items += ` <div class="col-md-2 mt-1" onclick=addIdToSingleProduct("${
       item._id
     }")>
@@ -26,8 +23,9 @@ const getProductByCategory = async (cid) => {
                           item.images.length == 0
                             ? "ch1.jpg"
                             : item.images[0].url
-                        }" class="rounded-0 mt-2" alt="${item.title}" 
-                        style="height:120px"/>
+                        }" class="rounded-0 mt-2" alt="${
+      item.title
+    }" style="height:120px"/>
                         <div class="card-body p-0  pt-2">
                           <small class="text-success ps-0">${
                             item.title
@@ -40,19 +38,14 @@ const getProductByCategory = async (cid) => {
                       </div>
                     </div>`;
   });
-  setInterval(function () {
-    productPanel.style.display = "flex";
-  }, 1000);
   if (items == "") {
-    document.querySelector(".productPanel").innerHTML =
-      "<p class='text-center'>No Items</p>";
+    document.querySelector(".category-content").innerHTML =
+      "<p class='text-center text-dark'>No Items</p>";
   } else {
-    document.querySelector(".productPanel").innerHTML = items;
+    document.querySelector(".category-content").innerHTML = items;
   }
   closeProductPanel.addEventListener("click", () => {
-    document.querySelector(".productPanel").innerHTML = "";
-    test.style.display = "none";
-    test.style.height = "0px";
+    document.querySelector(".category-content").innerHTML = "";
   });
 };
 
@@ -63,7 +56,8 @@ async function getCategory() {
   let items = "";
   data.map((cate) => {
     const cid = cate._id;
-    items += ` <li onclick=getProductByCategory("${cid}")>
+    items += ` <li onclick=getProductByCategory("${cid}") data-bs-toggle="modal"
+                    data-bs-target="#categoryProductModal">
                   <a class="dropdown-item ">${cate.title}</a>
                 </li>`;
   });

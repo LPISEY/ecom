@@ -159,9 +159,8 @@ async function getTotal() {
       },
     });
     const data = await response.json();
-
     let totalQty = 0;
-    let totalPrice = 0;
+    let totalPrice = 0.0;
 
     data.map((item) => {
       totalQty += item.quantity;

@@ -31,7 +31,7 @@ const addToCart = (productId, price) => {
     .then((data) => {
       if (data) {
         const getCart = localStorage?.getItem("cart");
-        let cart = JSON.parse(getCart);
+        let cart = getCart == null ? [] : JSON.parse(getCart);
         cart.push(item);
         localStorage.setItem("cart", JSON.stringify(cart));
         getTotal();

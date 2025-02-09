@@ -17,6 +17,9 @@
 body {
   font-family: "Rubik", sans-serif;
 }
+.card {
+  cursor: pointer;
+}
 .box-shadow {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
@@ -309,6 +312,18 @@ ol.breadcrumb li a {
 
 /* Normal desktop :992px. */
 @media (min-width: 992px) and (max-width: 1200px) {
+  .text-danger {
+    font-style: 11px;
+  }
+  p {
+    font-size: 12px;
+  }
+  h4 {
+    font-size: 1.1em;
+  }
+  label {
+    font-size: 14px;
+  }
   .nav-bar-icons {
     font-size: 30px;
   }
@@ -322,6 +337,12 @@ ol.breadcrumb li a {
   }
   .card-img-top {
     height: 200px;
+  }
+  .search-content img {
+    height: 70px;
+  }
+  .cart-body {
+    font-size: 14px;
   }
   .footer h4 {
     font-size: 1.1em;
