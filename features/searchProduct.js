@@ -19,7 +19,7 @@ searchProductInput.addEventListener("keyup", (e) => {
                             ? "ch1.jpg"
                             : item.images[0].url
                         }" class="rounded-0 mt-2" alt="${item.title}" 
-                        style="height:120px"/>
+                        />
                         <div class="card-body p-0 pt-2">
                           <small class="text-success ps-0">${
                             item.title

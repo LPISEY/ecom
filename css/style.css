@@ -312,6 +312,9 @@ ol.breadcrumb li a {
 
 /* Normal desktop :992px. */
 @media (min-width: 992px) and (max-width: 1200px) {
+  .btn-group button {
+    padding: 0;
+  }
   .text-danger {
     font-style: 11px;
   }
@@ -337,9 +340,6 @@ ol.breadcrumb li a {
   }
   .card-img-top {
     height: 200px;
-  }
-  .search-content img {
-    height: 70px;
   }
   .cart-body {
     font-size: 14px;

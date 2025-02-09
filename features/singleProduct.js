@@ -162,7 +162,14 @@ function starRating(n) {
 }
 
 const submitReviewBtn = document.querySelector(".submit-review-btn");
-let comment = document.getElementsByClassName("comment");
+const comment = document.getElementsByClassName("comment");
+const commentError = document.getElementById("commentError");
+const starError = document.getElementById("starError");
+removeTextAreaWhiteSpace();
+function removeTextAreaWhiteSpace() {
+  var textarea = document.getElementById("comment");
+  textarea.value = textarea.value.replace(/^\s*|\s*$/g, "");
+}
 
 submitReviewBtn.addEventListener("click", async () => {
   const user = localStorage?.getItem("cust");
@@ -170,21 +177,41 @@ submitReviewBtn.addEventListener("click", async () => {
   const userToken = getUserId?.token;
   if (!userToken) window.location = "login.html";
 
-  await fetch(`http://localhost:5000/api/product/rating`, {
-    method: "PUT",
-    headers: {
-      "content-type": "application/json",
-      Authorization: `Bearer ${userToken}`,
-    },
-    body: JSON.stringify({
-      star: starNumber,
-      comment: comment.comment.value.replace(/^\s+|\s+$/gm, ""),
-      prodId: productId,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => getRatingProduct())
-    .catch((e) => console.log(e));
+  let isValid = true;
+  if (starNumber === 0) {
+    starError.textContent = "Please choose at least one star .";
+    isValid = false;
+  } else {
+    starError.textContent = "";
+    isValid = true;
+  }
+  if (comment.comment.value === "") {
+    commentError.textContent = "Please write a comment .";
+    isValid = false;
+  } else {
+    commentError.textContent = "";
+    isValid = true;
+  }
+
+  if (isValid) {
+    await fetch(`http://localhost:5000/api/product/rating`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${userToken}`,
+      },
+      body: JSON.stringify({
+        star: starNumber,
+        comment: comment.comment.value,
+        prodId: productId,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => getRatingProduct())
+      .catch((e) => console.log(e));
+  } else {
+    return false;
+  }
 });
 
 getRatingProduct();

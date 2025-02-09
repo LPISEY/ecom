@@ -26,7 +26,7 @@ const productCard = (id, image, title, brand, price, description) => {
                 <small class="text-info ps-0">
                   ${brand}
                 </small>
-                <div class="card-body  d-flex justify-content-center align-items-center">
+                <div class="card-body p-0 pt-3 pb-2 d-flex justify-content-center align-items-center">
                   <div class="btn-group">
                     <a type="button" class="btn btn-outline-success actions rounded-0"
                       onclick=addToCart2("${id}","${price}")>

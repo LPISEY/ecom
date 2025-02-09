@@ -54,14 +54,17 @@
                   <i onclick="starRating(3)" class="fa fa-star starRate"></i>
                   <i onclick="starRating(4)" class="fa fa-star starRate"></i>
                   <i onclick="starRating(5)" class="fa fa-star starRate"></i>
+                  <div id="starError" class="form-text text-danger"></div>
                 </div>
                 <div class="col-md-12">
                   <textarea
                     name="comment"
                     class="form-control rounded-0 mt-3 ps-2 comment"
+                    id="comment"
                     style="resize: none"
                   >
                   </textarea>
+                  <div id="commentError" class="form-text text-danger"></div>
                 </div>
                 <div class="col-md-12 mt-3 d-flex justify-content-end">
                   <a

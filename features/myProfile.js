@@ -124,7 +124,9 @@ function userShipping() {
   pincode.textContent = dataCheckout[0].shippingInfo.pincode;
 }
 const logout = async () => {
-  const response = await fetch("http://localhost:5000/api/user/logout");
-  const data = await response.json();
-  console.log(data);
+  // const response = await fetch("http://localhost:5000/api/user/logout");
+  // const data = await response.json();
+  // console.log(data);
+  localStorage.clear();
+  window.location = "login.html";
 };

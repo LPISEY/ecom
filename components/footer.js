@@ -6,27 +6,21 @@ const footer = `<div class="col-md-3">
                     </p>
                     <p><i class="fa fa-phone"></i> (+855)-71-855-1103</p>
                     <p><i class="fa fa-envelope"></i> lampisey@gmail.com</p>
-                    <div
-                        class="btn-group"
-                        role="group"
-                        aria-label="Basic mixed styles example"
-                    >
-                        <button
+                    <button
                         type="button"
-                        class="btn btn-outline-warning rounded-start-0"
-                        >
-                        <i class="fa fa-facebook"></i>
-                        </button>
-                        <button type="button" class="btn btn-outline-danger">
+                        class="btn btn-outline-warning btn-sm"
+                    >
+                        <i class="fa fa-facebook-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger btn-sm">
                         <i class="fa fa-instagram"></i>
-                        </button>
-                        <button type="button" class="btn btn-outline-info">
+                    </button>
+                    <button type="button" class="btn btn-outline-info btn-sm">
                         <i class="fa fa-twitter"></i>
-                        </button>
-                        <button type="button" class="btn btn-outline-success rounded-end-0">
+                    </button>
+                    <button type="button" class="btn btn-outline-success btn-sm">
                         <i class="fa fa-linkedin"></i>
-                        </button>
-                    </div>
+                    </button>
                     </div>
                     <div class="col-md-3">
                     <h4>Information</h4>
@@ -61,9 +55,6 @@ const footer = `<div class="col-md-3">
                         </li>
                         <li>
                         <a href="signup.html">Register Account </a>
-                        </li>
-                        <li>
-                        <a href="shipping.html">Create Shipping </a>
                         </li>
                     </ul>
                     </div>
