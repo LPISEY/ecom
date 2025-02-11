@@ -295,11 +295,10 @@ ol.breadcrumb li a {
 .liked-btn i {
   font-size: 12px;
 }
-
-:target {
-  color: red;
+.liked-btn.active:active i {
+  font-size: 12px;
+  color: var(--color-bf4800);
 }
-
 .myProfile {
   height: 400px;
 }
@@ -352,5 +351,13 @@ ol.breadcrumb li a {
   }
   .footer ul li a {
     font-size: 0.8em;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .nav-bar {
+    height: 90px;
+  }
+  ul.dropdown-menu li {
+    height: 90px;
   }
 }

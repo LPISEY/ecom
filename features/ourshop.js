@@ -3,6 +3,7 @@ async function ourShop() {
   try {
     const response = await fetch(`http://localhost:5000/api/product/ourshop/`);
     const data = await response.json();
+
     data.map((item) => {
       star(item.totalrating);
       const id = item._id;
@@ -42,7 +43,9 @@ const addToCart2 = (productId, price) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data) {
+      if (data.message) {
+        alert("Token has been expired. Please sign in again");
+      } else {
         const getCart = localStorage?.getItem("cart");
         let cart = getCart == null ? [] : JSON.parse(getCart);
         cart.push(item);

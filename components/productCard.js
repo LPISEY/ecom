@@ -6,7 +6,8 @@ const productCard = (id, image, title, brand, price, description) => {
                       class="card-img-top rounded-0 mt-2 mb-2"
                       alt="${title}"
               />
-              <a href="#" class="btn btn-dark rounded-5 d-flex justify-center align-items-center liked-btn addToWishList"  onclick=addToWishList("${id}")>
+              <a href="#" class="btn btn-dark rounded-5 d-flex justify-center align-items-center 
+              liked-btn addToWishList"  onclick=addToWishList("${id}")>
                   <i class="fa fa-heart "></i>
               </a>
               <div class="card-info">

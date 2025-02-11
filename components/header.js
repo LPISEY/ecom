@@ -67,7 +67,7 @@ const header = `<nav class="row topNavBar">
                                         <span class="nav-bar-icons-text">
                                             ${
                                               username != null
-                                                ? "WELCOME<br />" +
+                                                ? "Welcome<br />" +
                                                   username?.firstname +
                                                   " " +
                                                   username?.lastname
@@ -159,14 +159,19 @@ async function getTotal() {
       },
     });
     const data = await response.json();
-    let totalQty = 0;
-    let totalPrice = 0.0;
+    if (data.message) {
+      document.querySelector(".totalItems").textContent = "0";
+      document.querySelector(".totalPrice").textContent = "$ 0.00";
+    } else {
+      let totalQty = 0;
+      let totalPrice = 0.0;
 
-    data.map((item) => {
-      totalQty += item.quantity;
-      totalPrice += item.price * item.quantity;
-    });
-    document.querySelector(".totalItems").textContent = totalQty;
-    document.querySelector(".totalPrice").textContent = "$ " + totalPrice;
+      data?.map((item) => {
+        totalQty += item.quantity;
+        totalPrice += item.price * item.quantity;
+      });
+      document.querySelector(".totalItems").textContent = totalQty;
+      document.querySelector(".totalPrice").textContent = "$ " + totalPrice;
+    }
   }
 }

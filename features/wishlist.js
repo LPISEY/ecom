@@ -15,7 +15,7 @@ const addToWishList = (id) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      userWishList();
+      wishLists();
     })
     .catch((e) => console.log(e));
 };
@@ -64,6 +64,7 @@ async function wishLists() {
       },
     });
     const data = await response.json();
+
     data.wishlist.map((item) => {
       star(item.totalrating);
       const id = item._id;
@@ -72,6 +73,7 @@ async function wishLists() {
       const brand = item.brand.title;
       const price = item.price;
       const description = item.description;
+
       productCard(id, image, title, brand, price, description, star);
     });
 

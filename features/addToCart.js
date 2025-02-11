@@ -29,7 +29,9 @@ const addToCart = (productId, price) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data) {
+      if (data.message) {
+        alert("Token has been expired. Please sign in again");
+      } else {
         const getCart = localStorage?.getItem("cart");
         let cart = getCart == null ? [] : JSON.parse(getCart);
         cart.push(item);

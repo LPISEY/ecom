@@ -15,11 +15,7 @@ const addToWishList = (id) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      // if (data) {
-      //   document
-      //     .querySelectorAll(".addToWishList")
-      //     .forEach((e) => e.classList.toggle("liked"));
-      // }
+      if (data.message) alert("Token has been expired. Please sign in again");
     })
     .catch((e) => console.log(e));
 };

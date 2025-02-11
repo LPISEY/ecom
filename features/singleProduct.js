@@ -207,7 +207,13 @@ submitReviewBtn.addEventListener("click", async () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => getRatingProduct())
+      .then((data) => {
+        if (data.message) {
+          alert("Token has been expired. Please sign in again");
+        } else {
+          getRatingProduct();
+        }
+      })
       .catch((e) => console.log(e));
   } else {
     return false;
